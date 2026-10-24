@@ -1,10 +1,10 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import URL
 
 
-# итаем пароль из файла .env
+# Читаем пароль из файла .env
 env_path = Path(__file__).parent / ".env"
 
 password = None
@@ -18,7 +18,7 @@ if not password:
     raise ValueError("POSTGRES_PASSWORD не найден в .env")
 
 
-# араметры подключения к PostgreSQL
+# Параметры подключения к PostgreSQL
 url = URL.create(
     drivername="postgresql+psycopg",
     username="real_estate_user",
@@ -31,7 +31,7 @@ url = URL.create(
 engine = create_engine(url, pool_pre_ping=True)
 
 
-# роверяем подключение и количество записей
+# Проверяем подключение и количество записей
 with engine.connect() as connection:
     version = connection.execute(
         text("SELECT current_database()")
@@ -45,7 +45,7 @@ with engine.connect() as connection:
         text("SELECT COUNT(*) FROM flats")
     ).scalar_one()
 
-    print("одключение к PostgreSQL успешно!")
-    print(f"аза данных: {version}")
-    print(f"омов: {buildings_count}")
-    print(f"вартир: {flats_count}")
+    print("Подключение к PostgreSQL успешно!")
+    print(f"База данных: {version}")
+    print(f"Домов: {buildings_count}")
+    print(f"Квартир: {flats_count}")

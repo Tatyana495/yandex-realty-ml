@@ -10,10 +10,12 @@
 
     environment:
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      PYTHONPATH: "/opt/airflow"
 
     volumes:
       - airflow_home:/opt/airflow
       - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src:ro
 
     depends_on:
       postgres:

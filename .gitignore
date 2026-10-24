@@ -19,3 +19,6 @@ airflow.cfg
 
 # Local files
 compose.backup.yaml
+
+# Jupyter Notebook
+.ipynb_checkpoints/
