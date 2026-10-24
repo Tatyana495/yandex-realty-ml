@@ -1,0 +1,21 @@
+﻿# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets
+.env
+.env.*
+
+# Data
+data/
+*.csv
+
+# Airflow
+logs/
+airflow.db
+airflow.cfg
+
+# Local files
+compose.backup.yaml
