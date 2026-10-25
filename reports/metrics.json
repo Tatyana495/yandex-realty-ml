@@ -9,5 +9,11 @@
     "rmse_rub": 36475210.54,
     "r2": -0.0426
   },
-  "test_rows": 26362
+  "catboost": {
+    "mae_rub": 4205322.58,
+    "rmse_rub": 15843854.69,
+    "r2": 0.8033
+  },
+  "test_rows": 26362,
+  "catboost_trees": 735
 }

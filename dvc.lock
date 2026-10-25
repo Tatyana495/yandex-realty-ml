@@ -52,19 +52,31 @@ stages:
       hash: md5
       md5: 77646f01605b9594c0eef8cea81a3a4c
       size: 15868009
+    - path: src/ml/features.py
+      hash: md5
+      md5: 0c567f131e0aa770f3026f39c192551c
+      size: 1234
     - path: src/ml/train.py
       hash: md5
-      md5: acc0bd9af22d8cd1a029a5e51584ce1e
-      size: 2299
+      md5: 177b214726530b6690f4432a466af588
+      size: 5016
     params:
       params.yaml:
         train:
           alpha: 10.0
+          catboost:
+            iterations: 900
+            depth: 6
+            learning_rate: 0.07
+            l2_leaf_reg: 5.0
+            random_seed: 42
+            validation_size: 0.15
+            early_stopping_rounds: 80
     outs:
     - path: models/price_model.joblib
       hash: md5
-      md5: b05cb90ce77af0d4a46dff93a6435009
-      size: 5276
+      md5: 2e008967121616594b1e22b8204f00d0
+      size: 833685
   evaluate:
     cmd: python -m src.ml.evaluate
     deps:
@@ -74,14 +86,18 @@ stages:
       size: 3952139
     - path: models/price_model.joblib
       hash: md5
-      md5: b05cb90ce77af0d4a46dff93a6435009
-      size: 5276
+      md5: 2e008967121616594b1e22b8204f00d0
+      size: 833685
     - path: src/ml/evaluate.py
       hash: md5
-      md5: 195d36f988e30c79e0795c94b6889a59
-      size: 1541
+      md5: f7bd72aa454179da80cbf3377621fbf2
+      size: 2017
+    - path: src/ml/features.py
+      hash: md5
+      md5: 0c567f131e0aa770f3026f39c192551c
+      size: 1234
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: 65177e3b6d626897c941b258a47e507b
-      size: 229
+      md5: 1b8f4e0929893b6e5da85bd473a732a9
+      size: 354

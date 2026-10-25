@@ -1,3 +1,4 @@
 dvc[s3]
 PyYAML
 joblib
+catboost>=1.2.8,<2

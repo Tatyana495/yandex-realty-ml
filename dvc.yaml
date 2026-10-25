@@ -23,6 +23,7 @@ stages:
     cmd: python -m src.ml.train
     deps:
       - src/ml/train.py
+      - src/ml/features.py
       - data/ml/train.csv
     params:
       - train
@@ -33,6 +34,7 @@ stages:
     cmd: python -m src.ml.evaluate
     deps:
       - src/ml/evaluate.py
+      - src/ml/features.py
       - data/ml/test.csv
       - models/price_model.joblib
     metrics:

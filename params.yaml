@@ -1,5 +1,4 @@
-# Параметры третьего этапа
-
+# Параметры пайплайна. Изначальные database/split/Ridge сохранены.
 database:
   host: 127.0.0.1
   port: 55432
@@ -13,3 +12,11 @@ split:
 
 train:
   alpha: 10.0
+  catboost:
+    iterations: 900
+    depth: 6
+    learning_rate: 0.07
+    l2_leaf_reg: 5.0
+    random_seed: 42
+    validation_size: 0.15
+    early_stopping_rounds: 80
