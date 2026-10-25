@@ -1,0 +1,40 @@
+stages:
+  export:
+    cmd: python -m src.ml.export_data
+    deps:
+      - src/ml/export_data.py
+    params:
+      - database
+    outs:
+      - data/ml/clean.csv
+
+  split:
+    cmd: python -m src.ml.split_data
+    deps:
+      - src/ml/split_data.py
+      - data/ml/clean.csv
+    params:
+      - split
+    outs:
+      - data/ml/train.csv
+      - data/ml/test.csv
+
+  train:
+    cmd: python -m src.ml.train
+    deps:
+      - src/ml/train.py
+      - data/ml/train.csv
+    params:
+      - train
+    outs:
+      - models/price_model.joblib
+
+  evaluate:
+    cmd: python -m src.ml.evaluate
+    deps:
+      - src/ml/evaluate.py
+      - data/ml/test.csv
+      - models/price_model.joblib
+    metrics:
+      - reports/metrics.json:
+          cache: false

@@ -1,0 +1,6 @@
+[core]
+    remote = storage
+['remote "storage"']
+    url = s3://yandex-realty-ml-2026/dvc
+    endpointurl = https://storage.yandexcloud.net
+    region = ru-central1

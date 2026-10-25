@@ -1,0 +1,15 @@
+# Параметры третьего этапа
+
+database:
+  host: 127.0.0.1
+  port: 55432
+  name: real_estate
+  user: real_estate_user
+  table: real_estate_dataset_clean
+
+split:
+  test_size: 0.2
+  random_state: 42
+
+train:
+  alpha: 10.0
